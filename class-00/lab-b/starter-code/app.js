@@ -142,7 +142,7 @@ let message = (name) => `Hello, ${name}!`;
 console.log(message('Allie'));
 
 
-let Student = (name, age, hometown) => {
+let Student = function (name, age, hometown) {
   this.name = name;
   this.age = age;
   this.hometown = hometown;
@@ -155,11 +155,11 @@ let joe = new Student('Joe', 'Schmoe', 100);
 console.log(joe);
 
 
-// Student.prototype.greeting = () => `Hi, my name is ${this.name}`;
+Student.prototype.greeting = () => `Hi, my name is ${this.name}`;
 
 // TODO: Uncomment the following line of code to see the output in the browser console
 // Note that the arrow function will cause this method to break!
-// console.log(joe.greeting());
+console.log(joe.greeting());
 
 
 Student.courseName = function() {
@@ -178,17 +178,17 @@ Student.prototype.scope = function() {
 };
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scope());
+console.log(joe.scope());
 
 Student.prototype.scopeArrow = () => console.log(this);
 
 // TODO: Uncomment the following line of code to see the output in the browser console
-// console.log(joe.scopeArrow());
+console.log(joe.scopeArrow());
 
 // TODO: Write a COMMENT below to answer the following questions.
 // 1. What is "this" when joe.scope() is invoked?
-//
+//The current Student object, which is Joe in this case
 // 2. What is "this" when joe.scopeArrow() is invoked?
-//
+//The window. 
 // 3. Explain why "this" is different when an arrow function is used.
-//
+//Because arrow functions don't get "this" so their concept of context bubbles up, in this case landing on window.
